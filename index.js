@@ -4,6 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 let port = 4343;
 //Routes
+const main = require("./api/main");
 const api = require("./api/api");
 
 app.use(bodyParser.urlencoded({
@@ -15,8 +16,5 @@ app.listen(port, () => {
     console.log(`Working on ${port} port`);
 });
 
-app.get("/", (req, res) => {
-    app.send(`<center><h1>Hello World</h1></center>`)
-})
-
+app.use("/", main)
 app.use("/api", api);
